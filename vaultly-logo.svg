@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-labelledby="title desc">
+  <title id="title">Vaultly logo</title>
+  <desc id="desc">A violet rounded square with a white four point star</desc>
+  <defs>
+    <linearGradient id="violet" x1="72" y1="52" x2="438" y2="464" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#5D5FEF"/>
+      <stop offset="1" stop-color="#9D7BFF"/>
+    </linearGradient>
+    <filter id="shadow" x="-30%" y="-30%" width="160%" height="170%">
+      <feDropShadow dx="0" dy="20" stdDeviation="18" flood-color="#5D5FEF" flood-opacity=".32"/>
+    </filter>
+  </defs>
+  <rect x="48" y="48" width="416" height="416" rx="126" fill="url(#violet)" filter="url(#shadow)"/>
+  <path fill="#fff" d="M256 115c10 92 49 131 141 141-92 10-131 49-141 141-10-92-49-131-141-141 92-10 131-49 141-141Z"/>
+  <circle cx="384" cy="132" r="14" fill="#DCD7FF" opacity=".9"/>
+</svg>
