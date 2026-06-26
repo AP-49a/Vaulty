@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Create strong, custom passwords instantly." />
+    <title>Vaultly — Password Generator</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <main class="app-shell">
+      <section class="generator-card" aria-labelledby="page-title">
+        <header class="app-header">
+          <div class="brand">
+            <span class="brand-mark" aria-hidden="true">✦</span>
+            <div>
+              <p class="eyebrow">SECURE BY DESIGN</p>
+              <h1 id="page-title">Vaultly</h1>
+            </div>
+          </div>
+          <button id="themeToggle" class="icon-button" type="button" aria-label="Switch to dark mode" aria-pressed="false">
+            <span class="theme-icon" aria-hidden="true">☾</span>
+          </button>
+        </header>
+
+        <div class="intro">
+          <h2>Create a strong password</h2>
+          <p>Fine-tune every detail, then copy it in a click.</p>
+        </div>
+
+        <section class="password-panel" aria-label="Generated password">
+          <div class="password-output-wrap">
+            <input id="passwordOutput" class="password-output" type="text" value="" readonly aria-label="Generated password" autocomplete="off" />
+            <button id="visibilityToggle" class="field-icon-button" type="button" aria-label="Hide password" title="Show or hide password">
+              <span aria-hidden="true">◉</span>
+            </button>
+          </div>
+          <div class="password-actions">
+            <button id="copyButton" class="button button-secondary" type="button"><span aria-hidden="true">⧉</span> Copy</button>
+            <button id="regenerateButton" class="button button-secondary" type="button"><span aria-hidden="true">↻</span> Regenerate</button>
+          </div>
+        </section>
+
+        <p id="errorMessage" class="error-message" role="alert" aria-live="polite"></p>
+
+        <section class="strength-section" aria-label="Password strength">
+          <div class="strength-heading"><span>Strength</span><strong id="strengthText" data-strength="weak">Weak</strong></div>
+          <div class="strength-meter" role="meter" aria-label="Password strength" aria-valuemin="0" aria-valuemax="3" aria-valuenow="1">
+            <span class="strength-bar"></span><span class="strength-bar"></span><span class="strength-bar"></span>
+          </div>
+          <p id="strengthHint">Try a longer password with more character types.</p>
+        </section>
+
+        <form id="generatorForm" novalidate>
+          <div class="length-control">
+            <div class="control-label"><label for="lengthRange">Password length</label><output id="lengthValue" for="lengthRange">16</output></div>
+            <input id="lengthRange" type="range" min="4" max="64" value="16" />
+            <div class="range-labels" aria-hidden="true"><span>4</span><span>64</span></div>
+          </div>
+
+          <fieldset class="options-group">
+            <legend>Include</legend>
+            <div class="option-grid">
+              <label class="checkbox-option"><input type="checkbox" name="uppercase" checked /><span class="custom-checkbox"></span><span><strong>Uppercase</strong><small>A–Z</small></span></label>
+              <label class="checkbox-option"><input type="checkbox" name="lowercase" checked /><span class="custom-checkbox"></span><span><strong>Lowercase</strong><small>a–z</small></span></label>
+              <label class="checkbox-option"><input type="checkbox" name="numbers" checked /><span class="custom-checkbox"></span><span><strong>Numbers</strong><small>0–9</small></span></label>
+              <label class="checkbox-option"><input type="checkbox" name="symbols" checked /><span class="custom-checkbox"></span><span><strong>Symbols</strong><small>! @ # $</small></span></label>
+            </div>
+          </fieldset>
+
+          <div class="advanced-options">
+            <label class="switch-option"><span>Exclude similar characters <small>I, l, 1, O, 0</small></span><input type="checkbox" name="excludeSimilar" /><span class="switch"></span></label>
+            <label class="switch-option"><span>Exclude ambiguous symbols <small>{ } [ ] ( ) / \\ ' ` ~ , ; : . &lt; &gt;</small></span><input type="checkbox" name="excludeAmbiguous" /><span class="switch"></span></label>
+          </div>
+
+          <button id="generateButton" class="button button-primary" type="submit"><span aria-hidden="true">✦</span> Generate Password <kbd>Space</kbd></button>
+        </form>
+
+        <section class="history-section" aria-labelledby="historyTitle">
+          <div class="history-heading"><div><h2 id="historyTitle">Recent passwords</h2><p>Click one to copy it.</p></div><div class="history-controls"><button id="downloadHistory" class="text-button" type="button">Download</button><button id="clearHistory" class="text-button danger" type="button">Clear</button></div></div>
+          <ul id="historyList" class="history-list" aria-live="polite"></ul>
+          <p id="emptyHistory" class="empty-history">Your generated passwords will appear here.</p>
+        </section>
+      </section>
+    </main>
+    <div id="toast" class="toast" role="status" aria-live="polite"><span aria-hidden="true">✓</span><span id="toastText">Copied to clipboard!</span></div>
+    <script src="script.js"></script>
+  </body>
+</html>
